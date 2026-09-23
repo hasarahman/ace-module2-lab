@@ -109,9 +109,9 @@ def main() -> int:
             return 0
 
     try:
-        limit = max(1, int(os.environ.get("CM_FIX_LIMIT", "3") or "3"))
+        limit = max(1, int(os.environ.get("CM_FIX_LIMIT", "1") or "1"))
     except ValueError:
-        limit = 3
+        limit = 1
 
     blocking = [f for f in findings if severity_of(f) in BLOCKING]
     blocking.sort(key=lambda f: (RANK.get(severity_of(f), 0), conf(f)), reverse=True)
